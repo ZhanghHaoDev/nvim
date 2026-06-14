@@ -1,6 +1,8 @@
 # Neovim 使用指南
 
 > macOS · Ghostty · lazy.nvim · 以 C++ 开发为核心
+>
+> 仓库:<https://github.com/ZhanghHaoDev/nvim>
 
 ## 目录
 
@@ -38,6 +40,10 @@ git clone https://github.com/ZhanghHaoDev/nvim ~/.config/nvim
 ├── init.lua                        # 入口：设置 leader，检测安全模式，调用 config
 ├── safe.lua                        # 顶层安全模式入口（NVIM_SAFE_MODE=1 时由 shell 直接指定）
 ├── README.md                       # 本文档
+├── stylua.toml                     # 代码格式化规范（4 空格缩进）
+├── .editorconfig                   # 跨编辑器缩进/换行规范
+├── .luacheckrc                     # luacheck 静态检查配置
+├── .github/workflows/lint.yml      # CI：push/PR 跑 stylua --check + luacheck
 └── lua/
     ├── config/                     # 核心配置层（不依赖任何插件）
     │   ├── init.lua                # 配置主入口，按顺序加载 editor/keymaps/ui/behavior/lazy
@@ -71,8 +77,7 @@ git clone https://github.com/ZhanghHaoDev/nvim ~/.config/nvim
             ├── navigation.lua      # 导航插件：neo-tree、aerial、flash
             ├── search.lua          # 搜索插件：telescope、grug-far
             ├── git.lua             # Git 插件：gitsigns、lazygit、diffview
-            └── ui/
-                ├── init.lua        # UI 插件汇总入口
+            └── ui/                 # 由 lazy 原生目录 import 自动加载
                 ├── theme.lua       # 配色方案
                 ├── statusline.lua  # 状态栏（lualine）
                 ├── tabby.lua       # 标签栏（tabby.nvim）
@@ -116,8 +121,7 @@ NVIM_SAFE_MODE=1 nvim
 | `nvim-ufo` | 代码折叠（LSP + Treesitter 双来源） |
 | `indent-blankline` | 缩进参考线 + 当前作用域高亮 |
 | `rainbow-delimiters` | 彩虹括号 |
-| `nvim-autopairs` | 自动补全括号/引号 |
-| `Comment.nvim` | `gcc` 注释当前行，`gc` + motion 注释区域 |
+| `mini.pairs` | 自动补全括号/引号 |
 | `vim-illuminate` | 高亮当前光标下词的所有引用 |
 | `nvim-surround` | 添加/替换/删除成对符号 |
 | `vim-repeat` | `.` 重复支持插件操作 |
