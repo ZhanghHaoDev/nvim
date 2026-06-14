@@ -1,7 +1,7 @@
 -- 基础显示设置。
 vim.opt.encoding = "utf-8"
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.cursorline = true
 -- 常用模式下统一使用竖线光标。
 vim.opt.guicursor = "n-v-c-sm-i-ci-ve-r-cr-o:ver25"
@@ -13,11 +13,11 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.list = true
 vim.opt.listchars = {
-	tab = "> ",
-	trail = ".",
-	nbsp = "+",
-	extends = ">",
-	precedes = "<",
+    tab = "> ",
+    trail = ".",
+    nbsp = "+",
+    extends = ">",
+    precedes = "<",
 }
 
 -- 缩进规则：4 空格，不保留真实 Tab。

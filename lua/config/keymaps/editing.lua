@@ -1,35 +1,24 @@
 local map = vim.keymap.set
 
+-- 折叠
 map("n", "zR", function()
-  require("ufo").openAllFolds()
-end, { desc = "打开所有折叠" })
+    require("ufo").openAllFolds()
+end, { desc = "展开所有折叠" })
 map("n", "zM", function()
-  require("ufo").closeAllFolds()
-end, { desc = "关闭所有折叠" })
-map("n", "zr", function()
-  require("ufo").openFoldsExceptKinds()
-end, { desc = "展开当前层级折叠" })
-map("n", "zm", function()
-  require("ufo").closeFoldsWith()
-end, { desc = "收起当前层级折叠" })
+    require("ufo").closeAllFolds()
+end, { desc = "折叠所有" })
 
+-- 文档注释
 map("n", "<leader>cn", function()
-  require("neogen").generate()
+    require("neogen").generate()
 end, { desc = "生成文档注释" })
 
+-- 快速跳转
 map({ "n", "x", "o" }, "s", function()
-  require("flash").jump()
+    require("flash").jump()
 end, { desc = "快速跳转" })
-map({ "n", "x", "o" }, "S", function()
-  require("flash").treesitter()
-end, { desc = "跳转到语法节点" })
-map("o", "r", function()
-  require("flash").remote()
-end, { desc = "远程操作跳转" })
-map({ "o", "x" }, "R", function()
-  require("flash").treesitter_search()
-end, { desc = "语法节点搜索" })
 
+-- 行移动
 map("n", "<A-j>", "<cmd>move .+1<cr>==", { desc = "行下移" })
 map("n", "<A-k>", "<cmd>move .-2<cr>==", { desc = "行上移" })
 map("x", "<A-j>", ":move '>+1<cr>gv=gv", { desc = "选区下移" })
