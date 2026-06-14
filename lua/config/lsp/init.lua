@@ -67,7 +67,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("user_lsp_doc_links", { clear = true }),
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if not client or not client.supports_method("textDocument/documentLink") then
+        if not client or not client:supports_method("textDocument/documentLink") then
             return
         end
         local bufnr = args.buf
